@@ -28,7 +28,7 @@ public class PaperBook extends Book {
 
     @Override
     public String toString() {
-        return "PaperBook{" +
+        return "PaperBook{" + super.toString() +
                 "copies=" + copies +
                 ", pages=" + pages +
                 '}';
