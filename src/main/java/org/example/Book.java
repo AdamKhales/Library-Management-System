@@ -70,10 +70,7 @@ public abstract class Book implements Comparable<Book> {
         this.serialNumber = serialNumber;
     }
 
-    public void displayInfo(){
-        System.out.printf("Title: %s\nAuthor: %s\nPublisher: %s\nSerialNumber: %d\n"
-                , title, author, publisher, serialNumber);
-    }
+    public abstract void displayInfo();
 
     @Override
     public int compareTo(Book o) {
