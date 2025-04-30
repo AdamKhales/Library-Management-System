@@ -4,11 +4,16 @@ import java.util.Objects;
 
 public class Librarian extends User{
     private int librarianId;
-    private static int nextId = 1;
+    private static int nextLibrarianId = 1;
 
     public Librarian(String name) {
         super(name);
-        this.librarianId = nextId++;
+        this.librarianId = nextLibrarianId++;
+    }
+
+    public Librarian(String name, int librarianId) {
+        super(name);
+        this.librarianId = librarianId;
     }
 
     @Override
@@ -40,12 +45,12 @@ public class Librarian extends User{
         this.librarianId = librarianId;
     }
 
-    public static int getNextId() {
-        return nextId;
+    public static int getNextLibrarianId() {
+        return nextLibrarianId;
     }
 
-    public static void setNextId(int nextId) {
-        Librarian.nextId = nextId;
+    public static void setNextLibrarianId(int nextLibrarianId) {
+        Librarian.nextLibrarianId = nextLibrarianId;
     }
 
     @Override

@@ -2,13 +2,18 @@ package org.example;
 
 import java.util.Objects;
 
-public class Student extends User{
+public class Student extends User implements Borrowable{
     private int studentId;
-    private static int nextId = 1;
+    private static int nextStudentId = 1;
 
     public Student(String name) {
         super(name);
-        this.studentId = nextId++;
+        this.studentId = nextStudentId++;
+    }
+
+    public Student(String name, int studentId) {
+        super(name);
+        this.studentId = studentId;
     }
 
     @Override
@@ -45,11 +50,21 @@ public class Student extends User{
         this.studentId = studentId;
     }
 
-    public static int getNextId() {
-        return nextId;
+    public static int getNextStudentId() {
+        return nextStudentId;
     }
 
-    public static void setNextId(int nextId) {
-        Student.nextId = nextId;
+    public static void setNextStudentId(int nextStudentId) {
+        Student.nextStudentId = nextStudentId;
+    }
+
+    @Override
+    public boolean borrowBook(Book book) {
+        return false;
+    }
+
+    @Override
+    public boolean returnBook(Book book) {
+        return false;
     }
 }
