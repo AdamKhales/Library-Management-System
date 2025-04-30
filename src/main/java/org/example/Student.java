@@ -52,6 +52,4 @@ public class Student extends User{
     public static void setNextId(int nextId) {
         Student.nextId = nextId;
     }
-
-
 }
