@@ -1,6 +1,8 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 
 public class Librarian extends User{
@@ -106,8 +108,37 @@ public class Librarian extends User{
         }
     }
 
-    public void issueBook() {
-        //TODO
+    /**
+     * adds a book from the catalog into the list of borrowed books of the student (removes a copy if it is a paper book)
+     * @param book the book to be issued
+     * @param student the student to borrow the book
+     * @return true if successful,else, false
+     */
+    public boolean issueBook(Book book, Student student) {
+        if (book == null || student == null){
+            return false;
+        }
+        if (!LibraryManagementSystem.catalog.contains(book)){
+            return false;
+        }
+        if (student.getBorrowedBooks().contains(book)){
+            return false;
+        }
+        if (book instanceof PaperBook paperBook){
+            if (paperBook.getCopies() > 0){
+                student.borrowBook(paperBook);
+                if (paperBook.getCopies() == 0){
+                    LibraryManagementSystem.catalog.remove(paperBook);
+                }
+                return true;
+            }
+        }
+        if (book instanceof AudioBook audioBook){
+            List<Book> newBorrowedBooks = student.getBorrowedBooks();
+            newBorrowedBooks.add(audioBook);
+            student.setBorrowedBooks(newBorrowedBooks);
+            return true;
+        }
+        return false;
     }
-
 }

@@ -89,5 +89,69 @@ public class LibrarianTest {
         Assertions.assertFalse(LibraryManagementSystem.catalog.contains(book));
     }
 
+    @Test
+    public void TestIssueBook1() {
+        LibraryManagementSystem.catalog.clear();
+        Librarian librarian = new Librarian("Adam");
+        Student student = new Student("Adam");
+        Book paperBook = new PaperBook("1984", "George Orwell", "Secker & Warburg", 1001, 3, 328);
+
+        boolean expected = false;
+        boolean result = librarian.issueBook(paperBook, student);
+
+        librarian.issueBook(paperBook, student);
+
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void TestIssueBook2() {
+        LibraryManagementSystem.catalog.clear();
+        Librarian librarian = new Librarian("Adam");
+        Student student = new Student("Adam");
+        Book paperBook = new PaperBook("1984", "George Orwell", "Secker & Warburg", 1001, 3, 328);
+        LibraryManagementSystem.catalog.add(paperBook);
+
+        boolean expected = true;
+        boolean result = librarian.issueBook(paperBook, student);
+
+        librarian.issueBook(paperBook, student);
+
+        Assertions.assertEquals(expected, result);
+        Assertions.assertEquals(1, LibraryManagementSystem.catalog.size());
+        Assertions.assertEquals(2, ((PaperBook) paperBook).getCopies());
+        Assertions.assertTrue(student.getBorrowedBooks().contains(paperBook));
+    }
+
+    @Test
+    public void TestIssueBook3() {
+        LibraryManagementSystem.catalog.clear();
+        Librarian librarian = new Librarian("Adam");
+        Student student = new Student("Adam");
+        Book paperBook = null;
+        LibraryManagementSystem.catalog.add(paperBook);
+
+        boolean result = librarian.issueBook(paperBook, student);
+
+        librarian.issueBook(paperBook, student);
+
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    public void TestIssueBook4() {
+        LibraryManagementSystem.catalog.clear();
+        Librarian librarian = new Librarian("Adam");
+        Student student = null;
+        Book paperBook = new PaperBook("1984", "George Orwell", "Secker & Warburg", 1001, 3, 328);
+        LibraryManagementSystem.catalog.add(paperBook);
+
+        boolean result = librarian.issueBook(paperBook, student);
+
+        librarian.issueBook(paperBook, student);
+
+        Assertions.assertFalse(result);
+    }
+
 
 }
