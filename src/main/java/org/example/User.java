@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class User {
@@ -39,4 +41,27 @@ public abstract class User {
 
     public abstract void displayInfo();
 
+    /**
+     * Searches books based on a keyword.
+     * it can be the title, the author,the publisher
+     * @param keyword the keyword
+     * @return a List of Books containing all the books found.
+     */
+    public static List<Book> searchBooks(String keyword) {
+        if (keyword == null || keyword.isEmpty()) {
+            return new ArrayList<>();
+        }
+        List<Book> foundBooks = new ArrayList<>();
+        for (Book book : LibraryManagementSystem.catalog) {
+            if (book == null) {
+                continue;
+            }
+            if (book.getTitle().toLowerCase().contains(keyword.toLowerCase())
+                    || book.getAuthor().toLowerCase().contains(keyword.toLowerCase())
+                    || book.getPublisher().toLowerCase().contains(keyword.toLowerCase())) {
+                foundBooks.add(book);
+            }
+        }
+        return foundBooks;
+    }
 }
