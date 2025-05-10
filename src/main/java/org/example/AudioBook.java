@@ -41,7 +41,7 @@ public class AudioBook extends Book {
 
     @Override
     public void displayInfo() {
-        System.out.printf("Title: %s\nAuthor: %s\nPublisher: %s\nSerialNumber: %d\nDuration in minutes: %d"
+        System.out.printf("Title: %s\nAuthor: %s\nPublisher: %s\nSerialNumber: %d\nDuration in minutes: %d\n"
                 ,getTitle(),getAuthor(),getPublisher(),getSerialNumber(),duration);
     }
 }

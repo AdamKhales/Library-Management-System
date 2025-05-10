@@ -121,4 +121,13 @@ public class LibraryManagementSystem {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * displays all the books in the catalog
+     */
+    public static void displayCatalog() {
+        for (Book book : catalog) {
+            book.displayInfo();
+        }
+    }
 }

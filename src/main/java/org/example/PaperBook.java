@@ -36,7 +36,7 @@ public class PaperBook extends Book {
 
     @Override
     public void displayInfo() {
-        System.out.printf("Title: %s\nAuthor: %s\nPublisher: %s\nSerialNumber: %d\nPages: %d\nCopies: %d"
+        System.out.printf("Title: %s\nAuthor: %s\nPublisher: %s\nSerialNumber: %d\nPages: %d\nCopies: %d\n"
                 ,getTitle(),getAuthor(),getPublisher(),getSerialNumber(), pages, copies);
     }
 
