@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public abstract class Book implements Comparable<Book> {
@@ -75,5 +76,13 @@ public abstract class Book implements Comparable<Book> {
     @Override
     public int compareTo(Book o) {
         return 100 * this.title.compareTo(o.title) + Integer.compare(this.serialNumber, o.serialNumber);
+    }
+
+    public static class SerialNumberComparator implements Comparator<Book> {
+
+        @Override
+        public int compare(Book o1, Book o2) {
+            return Integer.compare(o1.getSerialNumber(), o2.getSerialNumber());
+        }
     }
 }
